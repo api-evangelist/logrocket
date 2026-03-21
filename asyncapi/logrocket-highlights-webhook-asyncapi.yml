@@ -1,0 +1,110 @@
+asyncapi: 2.6.0
+info:
+  title: LogRocket Galileo Highlights Webhook
+  description: >-
+    The LogRocket Galileo Highlights webhook delivers AI-generated session
+    highlights to a customer-specified URL when processing completes.
+    When a highlights request includes a webhookURL parameter, LogRocket
+    sends a POST request to that URL containing the highlights results
+    once Galileo AI finishes analyzing the requested sessions.
+  version: '1.0'
+  contact:
+    name: LogRocket Support
+    url: https://logrocket.com/support
+servers:
+  customerWebhook:
+    url: '{webhookUrl}'
+    protocol: https
+    description: >-
+      Customer-provided webhook endpoint that receives highlights results.
+    variables:
+      webhookUrl:
+        description: >-
+          The URL provided in the webhookURL field of the highlights
+          request body.
+channels:
+  /:
+    description: >-
+      Webhook delivery channel for Galileo AI highlights results. LogRocket
+      sends a POST request to the customer-specified URL when highlights
+      generation is complete.
+    publish:
+      operationId: receiveHighlightsResult
+      summary: Receive Galileo AI highlights results
+      description: >-
+        Receives the completed highlights results from Galileo AI, including
+        an overall summary across all matched sessions and individual
+        per-session highlights with Markdown-formatted links to relevant
+        times in the session recordings.
+      message:
+        $ref: '#/components/messages/HighlightsWebhookPayload'
+components:
+  messages:
+    HighlightsWebhookPayload:
+      name: HighlightsWebhookPayload
+      title: Galileo Highlights Webhook Payload
+      summary: >-
+        Payload delivered to the webhook URL when highlights generation
+        completes.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/HighlightsWebhookBody'
+  schemas:
+    HighlightsWebhookBody:
+      type: object
+      description: >-
+        The webhook POST body containing the highlights results from
+        Galileo AI.
+      properties:
+        requestID:
+          type: string
+          description: >-
+            Unique identifier for the highlights request that triggered
+            this webhook delivery.
+        appID:
+          type: string
+          description: >-
+            The application ID associated with the highlights request.
+        status:
+          type: string
+          description: >-
+            The completion status of the highlights generation.
+          enum:
+            - COMPLETE
+            - FAILED
+        result:
+          description: >-
+            The highlights result, or null if generation failed.
+          oneOf:
+            - type: 'null'
+            - $ref: '#/components/schemas/HighlightsResult'
+    HighlightsResult:
+      type: object
+      description: >-
+        The generated highlights across all matched sessions.
+      properties:
+        highlights:
+          type: string
+          description: >-
+            Markdown-formatted summary across all sessions, with links
+            to relevant times in the referenced sessions.
+        sessions:
+          type: array
+          description: >-
+            Individual session summaries.
+          items:
+            $ref: '#/components/schemas/SessionHighlight'
+    SessionHighlight:
+      type: object
+      description: >-
+        Highlights for an individual session.
+      properties:
+        sessionId:
+          type: string
+          description: >-
+            The unique identifier for the session.
+        highlights:
+          type: string
+          description: >-
+            Markdown-formatted highlights for this specific session,
+            with links to relevant times.

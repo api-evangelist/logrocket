@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://logrocket.com/schemas/logrocket/session.json",
+  "title": "LogRocket Session",
+  "description": "Represents a LogRocket session recording containing user interactions, network requests, console logs, and errors captured during a user visit.",
+  "type": "object",
+  "required": ["sessionId", "appId", "startTime"],
+  "properties": {
+    "sessionId": {
+      "type": "string",
+      "description": "Unique identifier for the session recording."
+    },
+    "appId": {
+      "type": "string",
+      "description": "The LogRocket application or project identifier."
+    },
+    "orgId": {
+      "type": "string",
+      "description": "The LogRocket organization identifier."
+    },
+    "userId": {
+      "type": "string",
+      "description": "The identified user ID if the user was identified via LogRocket.identify()."
+    },
+    "userEmail": {
+      "type": "string",
+      "format": "email",
+      "description": "The email address of the identified user."
+    },
+    "userName": {
+      "type": "string",
+      "description": "The display name of the identified user."
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when the session recording started."
+    },
+    "endTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when the session recording ended."
+    },
+    "duration": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Duration of the session in milliseconds."
+    },
+    "browser": {
+      "type": "string",
+      "description": "The browser name and version detected during the session."
+    },
+    "deviceType": {
+      "type": "string",
+      "description": "The type of device used during the session.",
+      "enum": ["desktop", "mobile", "tablet"]
+    },
+    "operatingSystem": {
+      "type": "string",
+      "description": "The operating system detected during the session."
+    },
+    "country": {
+      "type": "string",
+      "description": "The country from which the session originated."
+    },
+    "region": {
+      "type": "string",
+      "description": "The region or state from which the session originated."
+    },
+    "city": {
+      "type": "string",
+      "description": "The city from which the session originated."
+    },
+    "sdkVersion": {
+      "type": "string",
+      "description": "The version of the LogRocket SDK that recorded the session."
+    },
+    "release": {
+      "type": "string",
+      "description": "The application release version set via LogRocket configuration."
+    },
+    "pagesVisited": {
+      "type": "array",
+      "description": "List of page URLs visited during the session.",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "errorCount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of JavaScript errors captured during the session."
+    },
+    "traits": {
+      "type": "object",
+      "description": "Custom user traits attached via LogRocket.identify() or the User Identification API.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "NetworkRequest": {
+      "type": "object",
+      "description": "A network request captured during the session.",
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URL of the network request."
+        },
+        "method": {
+          "type": "string",
+          "description": "The HTTP method used for the request.",
+          "enum": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"]
+        },
+        "statusCode": {
+          "type": "integer",
+          "description": "The HTTP status code returned."
+        },
+        "duration": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Duration of the request in milliseconds."
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the request was initiated."
+        }
+      }
+    },
+    "ConsoleLog": {
+      "type": "object",
+      "description": "A console log entry captured during the session.",
+      "properties": {
+        "level": {
+          "type": "string",
+          "description": "The console log level.",
+          "enum": ["log", "info", "warn", "error", "debug"]
+        },
+        "message": {
+          "type": "string",
+          "description": "The console log message."
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the console log was recorded."
+        }
+      }
+    },
+    "JavaScriptError": {
+      "type": "object",
+      "description": "A JavaScript error captured during the session.",
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "The error message."
+        },
+        "stack": {
+          "type": "string",
+          "description": "The error stack trace."
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the error occurred."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The page URL where the error occurred."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,141 @@
+openapi: 3.1.0
+info:
+  title: LogRocket GraphQL API
+  description: >-
+    The LogRocket GraphQL API allows developers to query session replay and
+    analytics data using GraphQL. It provides a flexible query interface for
+    retrieving session information, user activity, error details, and
+    performance metrics. Developers can use this API to build custom
+    dashboards, integrate session data into internal tools, and perform
+    advanced filtering and aggregation of LogRocket monitoring data.
+  version: '1.0'
+  contact:
+    name: LogRocket Support
+    url: https://logrocket.com/support
+  termsOfService: https://logrocket.com/terms
+externalDocs:
+  description: LogRocket GraphQL API Documentation
+  url: https://docs.logrocket.com/reference/graphql-1
+servers:
+  - url: https://api.logrocket.com
+    description: LogRocket Production API
+tags:
+  - name: GraphQL
+    description: >-
+      GraphQL endpoint for querying session replay and analytics data.
+security:
+  - tokenAuth: []
+paths:
+  /graphql:
+    post:
+      operationId: executeGraphQLQuery
+      summary: Execute a GraphQL query
+      description: >-
+        Executes a GraphQL query or mutation against the LogRocket data
+        model. Supports queries for sessions, users, errors, performance
+        metrics, and other monitoring data. Use the GraphQL introspection
+        query to discover the available schema, types, and fields.
+      tags:
+        - GraphQL
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GraphQLRequest'
+      responses:
+        '200':
+          description: GraphQL query executed successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GraphQLResponse'
+        '400':
+          description: Malformed GraphQL query or invalid variables.
+        '401':
+          description: Missing or invalid API key.
+components:
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        API token authentication. Use the format "token <your-api-key>".
+        API keys are available from the LogRocket dashboard under Settings
+        > General Settings.
+  schemas:
+    GraphQLRequest:
+      type: object
+      description: >-
+        A standard GraphQL request containing a query string and optional
+        variables and operation name.
+      required:
+        - query
+      properties:
+        query:
+          type: string
+          description: >-
+            The GraphQL query or mutation string to execute.
+        variables:
+          type: object
+          description: >-
+            Variables to substitute into the GraphQL query.
+          additionalProperties: true
+        operationName:
+          type: string
+          description: >-
+            The name of the operation to execute when the query contains
+            multiple operations.
+    GraphQLResponse:
+      type: object
+      description: >-
+        A standard GraphQL response containing data and optional errors.
+      properties:
+        data:
+          type: object
+          description: >-
+            The result of the executed query. Structure depends on the
+            fields requested in the query.
+          additionalProperties: true
+        errors:
+          type: array
+          description: >-
+            Array of errors encountered during query execution.
+          items:
+            $ref: '#/components/schemas/GraphQLError'
+    GraphQLError:
+      type: object
+      description: >-
+        A GraphQL error returned when a query fails partially or completely.
+      properties:
+        message:
+          type: string
+          description: >-
+            Human-readable description of the error.
+        locations:
+          type: array
+          description: >-
+            Locations in the query where the error occurred.
+          items:
+            type: object
+            properties:
+              line:
+                type: integer
+                description: >-
+                  The line number in the query.
+              column:
+                type: integer
+                description: >-
+                  The column number in the query.
+        path:
+          type: array
+          description: >-
+            Path to the field that caused the error.
+          items:
+            type: string
+        extensions:
+          type: object
+          description: >-
+            Additional error metadata.
+          additionalProperties: true

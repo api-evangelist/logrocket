@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://logrocket.com/schemas/logrocket/data-export.json",
+  "title": "LogRocket Data Export Record",
+  "description": "Represents a line in the JSON Lines file produced by the LogRocket data export. Each line contains a session event with metadata, user information, and event-specific data.",
+  "type": "object",
+  "required": ["eventType", "timestamp"],
+  "properties": {
+    "eventType": {
+      "type": "string",
+      "description": "The type of event recorded, such as lr.Metadata, network request, console log, or DOM mutation."
+    },
+    "timestamp": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Unix timestamp in milliseconds when the event occurred."
+    },
+    "sessionId": {
+      "type": "string",
+      "description": "Unique identifier for the session this event belongs to."
+    },
+    "metadata": {
+      "$ref": "#/$defs/SessionMetadata"
+    },
+    "user": {
+      "$ref": "#/$defs/UserInfo"
+    },
+    "network": {
+      "$ref": "#/$defs/NetworkEvent"
+    },
+    "console": {
+      "$ref": "#/$defs/ConsoleEvent"
+    },
+    "error": {
+      "$ref": "#/$defs/ErrorEvent"
+    }
+  },
+  "$defs": {
+    "SessionMetadata": {
+      "type": "object",
+      "description": "Metadata about the session including browser, device, location, and SDK information.",
+      "properties": {
+        "release": {
+          "type": "string",
+          "description": "The application release version."
+        },
+        "sdkVersion": {
+          "type": "string",
+          "description": "The LogRocket SDK version that captured this session."
+        },
+        "country": {
+          "type": "string",
+          "description": "The country from which the session originated."
+        },
+        "region": {
+          "type": "string",
+          "description": "The region or state from which the session originated."
+        },
+        "city": {
+          "type": "string",
+          "description": "The city from which the session originated."
+        },
+        "browser": {
+          "type": "string",
+          "description": "The browser name and version."
+        },
+        "browserVersion": {
+          "type": "string",
+          "description": "The browser version string."
+        },
+        "deviceType": {
+          "type": "string",
+          "description": "The type of device."
+        }
+      }
+    },
+    "UserInfo": {
+      "type": "object",
+      "description": "User identification data from LogRocket.identify() calls or anonymous session identifiers.",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The identified user ID or auto-generated anonymous identifier."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The email address of the identified user."
+        },
+        "name": {
+          "type": "string",
+          "description": "The display name of the identified user."
+        },
+        "traits": {
+          "type": "object",
+          "description": "Custom user traits.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "NetworkEvent": {
+      "type": "object",
+      "description": "A network request or response event.",
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URL of the network request."
+        },
+        "method": {
+          "type": "string",
+          "description": "The HTTP method."
+        },
+        "statusCode": {
+          "type": "integer",
+          "description": "The HTTP response status code."
+        },
+        "duration": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Request duration in milliseconds."
+        }
+      }
+    },
+    "ConsoleEvent": {
+      "type": "object",
+      "description": "A console log event.",
+      "properties": {
+        "level": {
+          "type": "string",
+          "description": "The console log level.",
+          "enum": ["log", "info", "warn", "error", "debug"]
+        },
+        "message": {
+          "type": "string",
+          "description": "The console log message content."
+        }
+      }
+    },
+    "ErrorEvent": {
+      "type": "object",
+      "description": "A JavaScript error event.",
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "The error message."
+        },
+        "stack": {
+          "type": "string",
+          "description": "The error stack trace."
+        },
+        "source": {
+          "type": "string",
+          "description": "The source file where the error originated."
+        }
+      }
+    }
+  }
+}

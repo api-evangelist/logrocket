@@ -1,0 +1,394 @@
+openapi: 3.1.0
+info:
+  title: LogRocket REST API
+  description: >-
+    The LogRocket REST API provides programmatic access to LogRocket session
+    replay and monitoring data. It enables developers to manage user
+    identification by sending demographic and engagement data via PUT requests
+    to contextualize user behavior. The API also supports retrieving session
+    highlights and exported session data. All endpoints require an API access
+    key available from the LogRocket dashboard under Settings.
+  version: '1.0'
+  contact:
+    name: LogRocket Support
+    url: https://logrocket.com/support
+  termsOfService: https://logrocket.com/terms
+externalDocs:
+  description: LogRocket API Reference
+  url: https://docs.logrocket.com/reference
+servers:
+  - url: https://api.logrocket.com/v1
+    description: LogRocket Production API
+tags:
+  - name: Users
+    description: >-
+      Manage user identification and traits for session context.
+  - name: Data Export
+    description: >-
+      Retrieve exported session data files from storage buckets.
+  - name: Highlights
+    description: >-
+      Access Galileo AI-generated session highlights and summaries.
+security:
+  - tokenAuth: []
+paths:
+  /orgs/{orgId}/apps/{appId}/users/{userId}:
+    put:
+      operationId: updateUser
+      summary: Create or update user traits
+      description: >-
+        Creates or updates a user record with the specified traits. If the user
+        already exists, any traits present in the request will be updated to
+        the new value. Traits not included in the request will maintain their
+        previous values. To remove a trait, set it to a blank value. Any user
+        trait values submitted as integers or booleans will be converted to
+        strings in the response.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/appId'
+        - name: userId
+          in: path
+          required: true
+          description: >-
+            The unique identifier for the user within your application.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserIdentificationRequest'
+      responses:
+        '200':
+          description: User traits successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid request body or parameters.
+        '401':
+          description: Missing or invalid API key.
+        '404':
+          description: Organization or application not found.
+  /orgs/{orgId}/apps/{appId}/data-export/:
+    get:
+      operationId: listDataExports
+      summary: List exported session data files
+      description: >-
+        Returns a paginated list of exported session data files. Each session
+        produces a single JSON Lines file when the session completes, which is
+        defined as no new data being received for over an hour. Use the cursor
+        from the response to retrieve the next page of results.
+      tags:
+        - Data Export
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/appId'
+        - name: cursor
+          in: query
+          required: false
+          description: >-
+            Cursor from a previous response to retrieve the next page of
+            newer sessions. Treat this value as a string even though it may
+            appear numeric.
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          description: >-
+            Maximum number of session export records to return per page.
+            Default is 10, maximum is 100.
+          schema:
+            type: integer
+            default: 10
+            minimum: 1
+            maximum: 100
+        - name: date
+          in: query
+          required: false
+          description: >-
+            Unix timestamp in milliseconds to start retrieving sessions from.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of exported session data files.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataExportResponse'
+        '401':
+          description: Missing or invalid API key.
+        '404':
+          description: Organization or application not found.
+  /orgs/{orgId}/apps/{appId}/highlights/:
+    post:
+      operationId: createHighlights
+      summary: Request Galileo AI session highlights
+      description: >-
+        Initiates a request for Galileo AI to generate session highlights and
+        summaries. You can specify a user by email or user ID, and optionally
+        limit the time range. The response includes a request ID that can be
+        used to poll for results. Optionally provide a webhook URL to receive
+        results via POST when they are ready.
+      tags:
+        - Highlights
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/appId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HighlightsRequest'
+      responses:
+        '200':
+          description: Highlights request accepted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HighlightsResponse'
+        '400':
+          description: Invalid request body or parameters.
+        '401':
+          description: Missing or invalid API key.
+        '404':
+          description: Organization or application not found.
+    get:
+      operationId: getHighlights
+      summary: Retrieve Galileo AI session highlights
+      description: >-
+        Retrieves the status and results of a previously submitted highlights
+        request. If highlights are still being generated, the result field will
+        be null and the status will be PENDING. When complete, the result
+        includes overall highlights across all sessions and per-session
+        highlights with Markdown-formatted links to relevant session times.
+      tags:
+        - Highlights
+      parameters:
+        - $ref: '#/components/parameters/orgId'
+        - $ref: '#/components/parameters/appId'
+        - name: id
+          in: query
+          required: true
+          description: >-
+            The request ID returned from the POST highlights endpoint.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Highlights result or pending status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HighlightsResponse'
+        '401':
+          description: Missing or invalid API key.
+        '404':
+          description: Highlights request not found.
+components:
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        API token authentication. Use the format "token <your-api-key>".
+        API keys are available from the LogRocket dashboard under Settings
+        > General Settings.
+  parameters:
+    orgId:
+      name: orgId
+      in: path
+      required: true
+      description: >-
+        The organization identifier found in the LogRocket dashboard URL.
+      schema:
+        type: string
+    appId:
+      name: appId
+      in: path
+      required: true
+      description: >-
+        The application or project identifier found in the LogRocket
+        dashboard URL.
+      schema:
+        type: string
+  schemas:
+    UserIdentificationRequest:
+      type: object
+      description: >-
+        Request body for creating or updating user identification traits.
+      properties:
+        name:
+          type: string
+          description: >-
+            The display name of the user.
+        email:
+          type: string
+          format: email
+          description: >-
+            The email address of the user.
+        traits:
+          type: object
+          description: >-
+            Custom key-value pairs representing user traits such as
+            subscription type, revenue data, or product interest. Values
+            will be converted to strings in the response.
+          additionalProperties:
+            oneOf:
+              - type: string
+              - type: integer
+              - type: boolean
+    User:
+      type: object
+      description: >-
+        A LogRocket user record with identification traits.
+      properties:
+        userId:
+          type: string
+          description: >-
+            The unique identifier for the user.
+        name:
+          type: string
+          description: >-
+            The display name of the user.
+        email:
+          type: string
+          format: email
+          description: >-
+            The email address of the user.
+        traits:
+          type: object
+          description: >-
+            Custom key-value pairs representing user traits. All values
+            are returned as strings regardless of the input type.
+          additionalProperties:
+            type: string
+    DataExportResponse:
+      type: object
+      description: >-
+        Paginated response containing exported session data file URLs.
+      properties:
+        cursor:
+          type: string
+          description: >-
+            Cursor value for retrieving the next page of results. Treat as
+            a string even though it may appear numeric.
+        sessions:
+          type: array
+          description: >-
+            Array of exported session records with download URLs.
+          items:
+            $ref: '#/components/schemas/ExportedSession'
+    ExportedSession:
+      type: object
+      description: >-
+        An exported session data file record.
+      properties:
+        url:
+          type: string
+          format: uri
+          description: >-
+            URL to download the JSON Lines file containing the session data.
+    HighlightsRequest:
+      type: object
+      description: >-
+        Request body for generating Galileo AI session highlights.
+      properties:
+        userEmail:
+          type: string
+          format: email
+          description: >-
+            Email address of the user whose sessions to summarize. Up to
+            10 most recent sessions from the last 30 days will be included.
+        userID:
+          type: string
+          description: >-
+            User ID of the user whose sessions to summarize. Alternative
+            to userEmail.
+        timeRange:
+          type: object
+          description: >-
+            Time range to limit the sessions included in the highlights.
+          properties:
+            startMs:
+              type: integer
+              format: int64
+              description: >-
+                Start of the time range as a Unix timestamp in milliseconds.
+            endMs:
+              type: integer
+              format: int64
+              description: >-
+                End of the time range as a Unix timestamp in milliseconds.
+        webhookURL:
+          type: string
+          format: uri
+          description: >-
+            URL to receive a POST request with the highlights results when
+            they are ready. If not provided, poll the GET endpoint with the
+            request ID.
+    HighlightsResponse:
+      type: object
+      description: >-
+        Response containing Galileo AI highlights status and results.
+      properties:
+        requestID:
+          type: string
+          description: >-
+            Unique identifier for the highlights request.
+        appID:
+          type: string
+          description: >-
+            The application ID associated with the request.
+        status:
+          type: string
+          description: >-
+            Current status of the highlights generation.
+          enum:
+            - PENDING
+            - COMPLETE
+            - FAILED
+        result:
+          description: >-
+            The highlights result, or null if still pending.
+          oneOf:
+            - type: 'null'
+            - $ref: '#/components/schemas/HighlightsResult'
+    HighlightsResult:
+      type: object
+      description: >-
+        The generated highlights across all matched sessions.
+      properties:
+        highlights:
+          type: string
+          description: >-
+            Markdown-formatted summary across all sessions, with links
+            to relevant times in the referenced sessions.
+        sessions:
+          type: array
+          description: >-
+            Individual session summaries.
+          items:
+            $ref: '#/components/schemas/SessionHighlight'
+    SessionHighlight:
+      type: object
+      description: >-
+        Highlights for an individual session.
+      properties:
+        sessionId:
+          type: string
+          description: >-
+            The unique identifier for the session.
+        highlights:
+          type: string
+          description: >-
+            Markdown-formatted highlights for this specific session,
+            with links to relevant times.

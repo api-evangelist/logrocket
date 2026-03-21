@@ -1,0 +1,128 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "lr": "https://logrocket.com/ns/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Session": {
+      "@id": "lr:Session",
+      "@context": {
+        "sessionId": "lr:sessionId",
+        "appId": "lr:appId",
+        "orgId": "lr:orgId",
+        "userId": "schema:identifier",
+        "userEmail": "schema:email",
+        "userName": "schema:name",
+        "startTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "endTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "duration": {
+          "@id": "schema:duration",
+          "@type": "xsd:integer"
+        },
+        "browser": "lr:browser",
+        "deviceType": "lr:deviceType",
+        "operatingSystem": "lr:operatingSystem",
+        "country": "schema:addressCountry",
+        "region": "schema:addressRegion",
+        "city": "schema:addressLocality",
+        "sdkVersion": "schema:softwareVersion",
+        "release": "schema:version",
+        "pagesVisited": {
+          "@id": "lr:pagesVisited",
+          "@type": "@id",
+          "@container": "@set"
+        },
+        "errorCount": {
+          "@id": "lr:errorCount",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "User": {
+      "@id": "lr:User",
+      "@context": {
+        "userId": "schema:identifier",
+        "name": "schema:name",
+        "email": "schema:email",
+        "traits": "lr:traits"
+      }
+    },
+
+    "Highlight": {
+      "@id": "lr:Highlight",
+      "@context": {
+        "requestID": "lr:requestID",
+        "appID": "lr:appID",
+        "status": "lr:status",
+        "highlights": "lr:highlights",
+        "sessions": {
+          "@id": "lr:sessions",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "DataExport": {
+      "@id": "lr:DataExport",
+      "@context": {
+        "cursor": "lr:cursor",
+        "sessions": {
+          "@id": "lr:exportedSessions",
+          "@container": "@set"
+        },
+        "url": {
+          "@id": "schema:contentUrl",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "NetworkRequest": {
+      "@id": "lr:NetworkRequest",
+      "@context": {
+        "url": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "method": "lr:httpMethod",
+        "statusCode": {
+          "@id": "lr:statusCode",
+          "@type": "xsd:integer"
+        },
+        "duration": {
+          "@id": "lr:duration",
+          "@type": "xsd:integer"
+        },
+        "timestamp": {
+          "@id": "dcterms:date",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "JavaScriptError": {
+      "@id": "lr:JavaScriptError",
+      "@context": {
+        "message": "schema:description",
+        "stack": "lr:stackTrace",
+        "timestamp": {
+          "@id": "dcterms:date",
+          "@type": "xsd:dateTime"
+        },
+        "url": {
+          "@id": "lr:sourceUrl",
+          "@type": "@id"
+        }
+      }
+    }
+  }
+}
