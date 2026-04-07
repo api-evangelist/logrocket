@@ -1,6 +1,5 @@
 aid: logrocket
-url: 
-  https://raw.githubusercontent.com/api-evangelist/logrocket/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/logrocket/refs/heads/main/apis.yml
 modified: '2026-03-20'
 common:
   - type: JSON-LD
@@ -13,13 +12,12 @@ apis:
   - aid: logrocket:rest-api
     name: LogRocket REST API
     tags:
-      - Session Replay
-      - Error Monitoring
-      - User Identification
       - Analytics
+      - Error Monitoring
       - Observability
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Session Replay
+      - User Identification
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.logrocket.com
     humanURL: https://docs.logrocket.com/reference
     properties:
@@ -37,13 +35,12 @@ apis:
   - aid: logrocket:graphql-api
     name: LogRocket GraphQL API
     tags:
-      - Session Replay
-      - GraphQL
       - Analytics
-      - Querying
+      - GraphQL
       - Observability
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Querying
+      - Session Replay
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.logrocket.com
     humanURL: https://docs.logrocket.com/reference/graphql-1
     properties:
@@ -61,13 +58,12 @@ apis:
   - aid: logrocket:javascript-sdk
     name: LogRocket JavaScript SDK
     tags:
-      - Session Replay
-      - JavaScript
-      - SDK
       - Browser
       - Frontend Monitoring
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - JavaScript
+      - SDK
+      - Session Replay
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://docs.logrocket.com/reference/getting-started-with-sdks
     properties:
@@ -84,13 +80,12 @@ apis:
   - aid: logrocket:react-native-sdk
     name: LogRocket React Native SDK
     tags:
-      - Session Replay
-      - React Native
-      - SDK
       - Mobile
       - Mobile Monitoring
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - React Native
+      - SDK
+      - Session Replay
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://docs.logrocket.com/reference/configure-reactnative-sdk
     properties:
@@ -106,13 +101,12 @@ apis:
   - aid: logrocket:data-export-api
     name: LogRocket Data Export API
     tags:
-      - Data Export
       - Analytics
+      - Data Export
+      - ETL
       - Session Data
       - Storage
-      - ETL
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.logrocket.com
     humanURL: https://docs.logrocket.com/docs/data-export
     properties:
@@ -129,12 +123,11 @@ apis:
   - aid: logrocket:user-identification-api
     name: LogRocket User Identification API
     tags:
-      - User Management
+      - Analytics
       - Identification
       - User Data
-      - Analytics
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - User Management
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.logrocket.com
     humanURL: https://docs.logrocket.com/docs/user-identification-api
     properties:
@@ -151,13 +144,12 @@ apis:
   - aid: logrocket:session-highlights-api
     name: LogRocket Galileo Highlights API
     tags:
-      - Session Replay
       - AI
       - Highlights
-      - Summarization
       - Observability
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Session Replay
+      - Summarization
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.logrocket.com
     humanURL: https://docs.logrocket.com/docs/session-highlights-api
     properties:

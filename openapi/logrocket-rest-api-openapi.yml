@@ -20,15 +20,15 @@ servers:
   - url: https://api.logrocket.com/v1
     description: LogRocket Production API
 tags:
-  - name: Users
-    description: >-
-      Manage user identification and traits for session context.
   - name: Data Export
     description: >-
       Retrieve exported session data files from storage buckets.
   - name: Highlights
     description: >-
       Access Galileo AI-generated session highlights and summaries.
+  - name: Users
+    description: >-
+      Manage user identification and traits for session context.
 security:
   - tokenAuth: []
 paths:
