@@ -1,13 +1,14 @@
 aid: logrocket
-url: https://raw.githubusercontent.com/api-evangelist/logrocket/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/logrocket/refs/heads/main/apis.yml
 modified: '2026-03-20'
 common:
-- type: JSON-LD
-  url: json-ld/logrocket-context.jsonld
-- type: JSONSchema
-  url: json-schema/logrocket-session-schema.json
-- type: JSONSchema
-  url: json-schema/logrocket-data-export-schema.json
+  - type: JSON-LD
+    url: json-ld/logrocket-context.jsonld
+  - type: JSONSchema
+    url: json-schema/logrocket-session-schema.json
+  - type: JSONSchema
+    url: json-schema/logrocket-data-export-schema.json
 apis:
   - aid: logrocket:rest-api
     name: LogRocket REST API
@@ -17,7 +18,8 @@ apis:
       - User Identification
       - Analytics
       - Observability
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.logrocket.com
     humanURL: https://docs.logrocket.com/reference
     properties:
@@ -40,7 +42,8 @@ apis:
       - Analytics
       - Querying
       - Observability
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.logrocket.com
     humanURL: https://docs.logrocket.com/reference/graphql-1
     properties:
@@ -63,7 +66,8 @@ apis:
       - SDK
       - Browser
       - Frontend Monitoring
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://docs.logrocket.com/reference/getting-started-with-sdks
     properties:
@@ -85,7 +89,8 @@ apis:
       - SDK
       - Mobile
       - Mobile Monitoring
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://docs.logrocket.com/reference/configure-reactnative-sdk
     properties:
@@ -106,7 +111,8 @@ apis:
       - Session Data
       - Storage
       - ETL
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.logrocket.com
     humanURL: https://docs.logrocket.com/docs/data-export
     properties:
@@ -127,7 +133,8 @@ apis:
       - Identification
       - User Data
       - Analytics
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.logrocket.com
     humanURL: https://docs.logrocket.com/docs/user-identification-api
     properties:
@@ -149,7 +156,8 @@ apis:
       - Highlights
       - Summarization
       - Observability
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.logrocket.com
     humanURL: https://docs.logrocket.com/docs/session-highlights-api
     properties:
@@ -165,3 +173,7 @@ apis:
       API to retrieve session highlights via POST requests, enabling integration
       of AI-powered session insights into custom workflows, alerting systems,
       and internal dashboards.
+description: >-
+  LogRocket is a frontend application monitoring solution that lets developers replay
+  problems as if they happened in their own browser, combining session replay, error
+  tracking, and product analytics.
