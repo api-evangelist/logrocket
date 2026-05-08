@@ -3,21 +3,57 @@ url: https://raw.githubusercontent.com/api-evangelist/logrocket/refs/heads/main/
 name: LogRocket
 x-type: company
 description: >-
-  LogRocket is a frontend monitoring and session replay platform for JavaScript apps. Captures sessions, network, console, performance, and errors with privacy controls.
+  LogRocket is a session replay, product analytics, and frontend monitoring platform that captures user sessions, errors, and performance data.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Observability
   - Session Replay
-  - Frontend
-  - Monitoring
+  - Product Analytics
+  - Frontend Monitoring
+  - Logging
   - Errors
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: logrocket:logrocket-rest-api
+    name: LogRocket REST API
+    description: >-
+      LogRocket REST API supports server-side identification, custom events, session metadata retrieval, user/session lookup, and integration management.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.logrocket.com/reference
+    baseURL: https://api.logrocket.com/v1
+    tags:
+      - Session Replay
+      - Analytics
+      - REST
+    properties:
+      - type: Documentation
+        url: https://docs.logrocket.com/reference
+      - type: Authentication
+        url: https://docs.logrocket.com/reference/authentication
+      - type: OpenAPI
+        url: openapi/logrocket-rest-api-openapi.yml
+  - aid: logrocket:logrocket-graphql-api
+    name: LogRocket GraphQL API
+    description: >-
+      LogRocket GraphQL API for querying session, event, error, and analytics data with flexible field selection.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.logrocket.com/reference
+    baseURL: https://api.logrocket.com
+    tags:
+      - Session Replay
+      - Analytics
+      - GraphQL
+    properties:
+      - type: Documentation
+        url: https://docs.logrocket.com/reference
+      - type: OpenAPI
+        url: openapi/logrocket-graphql-api-openapi.yml
 common:
   - type: Website
     url: https://logrocket.com/
+  - type: Documentation
+    url: https://docs.logrocket.com/reference
   - type: Plans
     url: plans/logrocket-plans-pricing.yml
   - type: RateLimits

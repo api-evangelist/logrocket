@@ -1,6 +1,6 @@
 # LogRocket (logrocket)
 
-LogRocket is a frontend monitoring and session replay platform for JavaScript apps. Captures sessions, network, console, performance, and errors with privacy controls.
+LogRocket is a session replay, product analytics, and frontend monitoring platform that captures user sessions, errors, and performance data.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/logrocket/refs/heads/main/apis.yml)
 
@@ -10,14 +10,23 @@ LogRocket is a frontend monitoring and session replay platform for JavaScript ap
 - **x-type:** company
 
 ## Tags:
- - Observability, Session Replay, Frontend, Monitoring, Errors
+ - Session Replay, Product Analytics, Frontend Monitoring, Logging, Errors
 
 ## Timestamps
 - **Created:** 2026-05-08
 - **Modified:** 2026-05-08
 
+## APIs
+
+### LogRocket REST API
+LogRocket REST API supports server-side identification, custom events, session metadata retrieval, user/session lookup, and integration management.
+
+- **Human URL:** https://docs.logrocket.com/reference
+- **Base URL:** https://r.logrocket.io
+
 ## Common Properties
 - [Website](https://logrocket.com/)
+- [Documentation](https://docs.logrocket.com/reference)
 - [Plans](plans/logrocket-plans-pricing.yml) — placeholder, pipeline reconciles later
 - [RateLimits](rate-limits/logrocket-rate-limits.yml) — placeholder
 - [FinOps](finops/logrocket-finops.yml) — FOCUS-aligned placeholder
