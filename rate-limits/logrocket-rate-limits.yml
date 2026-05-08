@@ -3,52 +3,33 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: LogRocket
 providerId: logrocket
-created: '2026-05-04'
-modified: '2026-05-05'
+created: '2026-05-08'
+modified: '2026-05-08'
 reconciled: false
 tags:
-  - Rate Limiting
-  - Observability
-  - Session Replay
-description: LogRocket does not publish a public per-second rate-limit table for its REST/GraphQL APIs.
-  Plan-level capacity is governed by monthly session quota and seat counts; raise via support for higher
-  ingest. Replace these entries when LogRocket publishes documented limits.
+- Observability
+- Session Replay
+- Frontend
+- Monitoring
+- Errors
+- Rate Limiting
+- Quotas
+- Throttling
+description: Placeholder rate-limit artifact for LogRocket. Replace with real limits once researched.
+notes: Initial scaffold — limits have not yet been reconciled.
 sources:
-  - https://logrocket.com/pricing
-  - https://docs.logrocket.com/
-notes: No public rate-limits documentation page found at time of reconciliation; values reflect plan-level
-  session quotas rather than per-request RPS.
+- https://logrocket.com/
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - name: Monthly sessions (Free)
-    scope: account
-    metric: sessions_per_month
-    limit: 1000
-    timeFrame: month
-  - name: Monthly sessions (Team)
-    scope: account
-    metric: sessions_per_month
-    limit: 50000
-    timeFrame: month
-    notes: Tiered between 10K and 50K based on selected Team package.
-  - name: Monthly sessions (Professional)
-    scope: account
-    metric: sessions_per_month
-    limit: 'see plan'
-  - name: API requests
-    scope: api-key
-    metric: varies
-    limit: 'see LogRocket docs / contact support'
+- name: Default
+  scope: account
+  metric: varies
+  limit: see provider documentation
+  notes: Pending reconciliation.
 policies:
-  - name: Conditional Recording
-    description: Enterprise customers can capture only sampled or conditionally relevant sessions to stay
-      within volume budgets.
-  - name: Backoff Strategy
-    description: On 429, retry with exponential backoff and respect Retry-After when present.
-  - name: Quota Reset
-    description: Monthly session quotas reset at the start of each calendar month.
-  - name: Fair Use
-    description: Even Enterprise customers are subject to fair-use limits on shared infrastructure.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

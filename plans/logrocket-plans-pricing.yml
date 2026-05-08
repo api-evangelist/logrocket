@@ -3,150 +3,39 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
 provider: LogRocket
 providerId: logrocket
-created: '2026-05-04'
-modified: '2026-05-05'
-reconciled: true
+created: '2026-05-08'
+modified: '2026-05-08'
+reconciled: false
 tags:
-  - Analytics
-  - Error Monitoring
-  - Frontend Monitoring
-  - Observability
-  - Session Replay
-description: LogRocket prices in tiered subscriptions sized by monthly session volume. Free for low
-  volume; Team and Professional are session-based subscriptions; Enterprise is custom for 1M+ sessions
-  with conditional recording. Paid plans require annual commitments.
+- Observability
+- Session Replay
+- Frontend
+- Monitoring
+- Errors
+- Plans
+description: Placeholder plans/pricing artifact for LogRocket. Replace with real published pricing once
+  the pipeline researches the provider's plans page.
+notes: Initial scaffold — plans/pricing have not yet been reconciled against the provider's documentation.
 sources:
-  - https://logrocket.com/pricing
+- https://logrocket.com/
 plans:
-  - id: logrocket-free
-    name: Free
-    type: freemium
-    description: 1,000 sessions/month, 1 month data retention, 3 seats.
-    entries:
-      - label: Sessions
-        name: sessions
-        type: quota
-        metric: session
-        limit: 1000
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Seats
-        name: seats
-        type: quota
-        metric: seat
-        limit: 3
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Data retention
-        name: retention
-        type: quota
-        metric: month
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Session Replay
-      - name: Error Reporting
-      - name: Community support
-  - id: logrocket-team
-    name: Team
-    type: tiered
-    description: Starting $69/month for 10K sessions. Tiered up (e.g. 25K at $139/mo). 5-10 seats.
-    entries:
-      - label: Monthly subscription (10K sessions)
-        name: subscription_10k
-        type: subscription
-        metric: month
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '69.00'
-        userMultiplied: false
-      - label: Monthly subscription (25K sessions)
-        name: subscription_25k
-        type: subscription
-        metric: month
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '139.00'
-        userMultiplied: false
-      - label: Sessions
-        name: sessions
-        type: tiered
-        metric: session
-        limit: 50000
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: 'tiered 10K-50K'
-        userMultiplied: false
-    elements:
-      - name: Session Replay
-      - name: Error Reporting
-      - name: Product Analytics
-      - name: 5-10 seats
-      - name: Annual commitment
-  - id: logrocket-professional
-    name: Professional
-    type: subscription
-    description: Starting $295/month. Any volume; custom retention and seats. Startup discount under 20 employees.
-    entries:
-      - label: Monthly subscription (starting)
-        name: subscription
-        type: subscription
-        metric: month
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '295.00'
-        userMultiplied: false
-      - label: Sessions
-        name: sessions
-        type: metered
-        metric: session
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Any session volume
-      - name: Custom retention
-      - name: Custom seats
-      - name: Annual commitment
-  - id: logrocket-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom pricing for 1M+ sessions/month, unlimited seats, conditional recording, optional self-hosted.
-    entries:
-      - label: Custom contract
-        name: custom
-        type: subscription
-        metric: contract
-        limit: -1
-        timeFrame: year
-        geo: global
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: 1M+ sessions/month
-      - name: Conditional Recording
-      - name: Self-hosted deployment
-      - name: Unlimited seats
-      - name: Custom retention
-      - name: Dedicated support
+- id: logrocket-default
+  name: To Be Reconciled
+  type: enterprise
+  description: Initial scaffold; replace with provider plan tiers once pricing is reconciled.
+  entries:
+  - label: API Access
+    name: api_access
+    type: flat
+    metric: varies
+    limit: -1
+    timeFrame: usage
+    geo: global
+    unit: 1
+    price: see https://logrocket.com/
+    userMultiplied: false
+  elements:
+  - name: Pending Reconciliation
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

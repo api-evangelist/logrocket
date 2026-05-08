@@ -3,74 +3,64 @@ specificationVersion: '1.0'
 schema: https://www.finops.org/framework/
 provider: LogRocket
 providerId: logrocket
-created: '2026-05-04'
-modified: '2026-05-05'
-reconciled: true
+created: '2026-05-08'
+modified: '2026-05-08'
+reconciled: false
 tags:
-  - FinOps
-  - FOCUS
-  - Observability
-  - Session Replay
-description: 'FOCUS-aligned FinOps for LogRocket: tiered subscription priced by monthly session capacity,
-  with seats and retention as secondary cost drivers. Annual commitment on paid tiers; Enterprise adds
-  conditional recording and self-hosted options.'
+- Observability
+- Session Replay
+- Frontend
+- Monitoring
+- Errors
+- FinOps
+- Cost Management
+- FOCUS
+description: FOCUS-aligned FinOps placeholder for LogRocket. Pipeline will replace with real billing details.
+notes: Initial scaffold — billing model has not yet been reconciled.
 sources:
-  - https://logrocket.com/pricing
+- https://logrocket.com/
+- https://focus.finops.org/focus-specification/v1-3/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-publisherName: LogRocket, Inc.
+publisherName: LogRocket
 serviceCategory: Observability
 billingModel:
-  pricingCategory: Tiered Subscription
-  billingFrequency: Annual
+  pricingCategory: To Be Reconciled
+  billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
-    - Usage
-    - Purchase
-    - Tax
-    - Adjustment
-    - Credit
+  - Usage
+  - Purchase
+  - Adjustment
 focusColumns:
   ServiceName: LogRocket
   ServiceCategory: Observability
   ProviderName: LogRocket
-  PublisherName: LogRocket, Inc.
-  InvoiceIssuerName: LogRocket, Inc.
+  PublisherName: LogRocket
+  InvoiceIssuerName: LogRocket
   BillingCurrency: USD
+  ChargeCategory: Usage
 meters:
-  - name: sessions
-    unit: session
-    aggregation: sum
-    dimensions:
-      - environment
-      - app
-  - name: seats
-    unit: seat
-    aggregation: max
-    dimensions:
-      - role
-  - name: retention_months
-    unit: month
-    aggregation: max
-  - name: subscription_fee
-    unit: month
-    aggregation: sum
-    dimensions:
-      - tier
+- name: api_usage
+  description: Catch-all meter pending reconciliation.
+  unit: varies
+  aggregation: sum
+  dimensions:
+  - account
+  - resource
 principles:
-  - name: Visibility
-    description: Use the LogRocket Usage page and project dashboards to monitor session ingest vs. monthly
-      capacity; set alerts before plan caps.
-  - name: Allocation
-    description: Tag sessions by app/environment via the JS SDK; map projects to internal team owners
-      for chargeback.
-  - name: Optimization
-    description: Use Conditional Recording (Enterprise) to capture only impactful sessions; sample low-value
-      flows; right-size retention.
-  - name: Accountability
-    description: Owners review monthly session burn vs. plan tier; renegotiate at renewal if forecasted
-      sessions outgrow Team into Professional/Enterprise.
+- name: Visibility
+  description: Pull provider invoices or usage exports until a self-serve usage feed is documented.
+- name: Allocation
+  description: Tag invoice line items to consuming business units in your FinOps store.
+- name: Optimization
+  description: Levers depend on the provider's billing model; review at renewal once reconciled.
+- name: Accountability
+  description: Assign a contract owner to review billing against negotiated terms.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
