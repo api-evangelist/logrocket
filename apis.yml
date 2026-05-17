@@ -1,7 +1,7 @@
 aid: logrocket
 url: https://raw.githubusercontent.com/api-evangelist/logrocket/refs/heads/main/apis.yml
 name: LogRocket
-x-type: company
+kind: company
 description: >-
   LogRocket is a session replay, product analytics, and frontend monitoring platform that captures user sessions, errors, and performance data.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
