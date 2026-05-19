@@ -1,0 +1,89 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: LogRocket REST API — Users
+  description: 'LogRocket REST API — Users. 1 operations. Lead operation: Create or update user traits. Self-contained Naftiko
+    capability covering one Logrocket business surface.'
+  tags:
+  - Logrocket
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    LOGROCKET_API_KEY: LOGROCKET_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-users
+    baseUri: https://api.logrocket.com/v1
+    description: LogRocket REST API — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: orgs-orgId-apps-appId-users-userId
+      path: /orgs/{orgId}/apps/{appId}/users/{userId}
+      operations:
+      - name: updateuser
+        method: PUT
+        description: Create or update user traits
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          description: The unique identifier for the user within your application.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.LOGROCKET_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: rest-users-rest
+    port: 8080
+    description: REST adapter for LogRocket REST API — Users. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/orgs/{orgid}/apps/{appid}/users/{userid}
+      name: orgs-orgid-apps-appid-users-userid
+      description: REST surface for orgs-orgId-apps-appId-users-userId.
+      operations:
+      - method: PUT
+        name: updateuser
+        description: Create or update user traits
+        call: rest-users.updateuser
+        with:
+          userId: rest.userId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for LogRocket REST API — Users. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: create-update-user-traits
+      description: Create or update user traits
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: rest-users.updateuser
+      with:
+        userId: tools.userId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: LogRocket GraphQL API — GraphQL
+  description: 'LogRocket GraphQL API — GraphQL. 1 operations. Lead operation: Execute a GraphQL query. Self-contained Naftiko
+    capability covering one Logrocket business surface.'
+  tags:
+  - Logrocket
+  - GraphQL
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    LOGROCKET_API_KEY: LOGROCKET_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: graphql-graphql
+    baseUri: https://api.logrocket.com
+    description: LogRocket GraphQL API — GraphQL business capability. Self-contained, no shared references.
+    resources:
+    - name: graphql
+      path: /graphql
+      operations:
+      - name: executegraphqlquery
+        method: POST
+        description: Execute a GraphQL query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.LOGROCKET_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: graphql-graphql-rest
+    port: 8080
+    description: REST adapter for LogRocket GraphQL API — GraphQL. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/graphql
+      name: graphql
+      description: REST surface for graphql.
+      operations:
+      - method: POST
+        name: executegraphqlquery
+        description: Execute a GraphQL query
+        call: graphql-graphql.executegraphqlquery
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: graphql-graphql-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for LogRocket GraphQL API — GraphQL. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: execute-graphql-query
+      description: Execute a GraphQL query
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: graphql-graphql.executegraphqlquery
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
