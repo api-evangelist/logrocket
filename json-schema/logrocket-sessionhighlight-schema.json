@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SessionHighlight",
+  "title": "SessionHighlight",
+  "type": "object",
+  "description": "Highlights for an individual session.",
+  "properties": {
+    "sessionId": {
+      "type": "string",
+      "description": "The unique identifier for the session."
+    },
+    "highlights": {
+      "type": "string",
+      "description": "Markdown-formatted highlights for this specific session, with links to relevant times."
+    }
+  }
+}

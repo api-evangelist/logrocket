@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GraphQLError",
+  "title": "GraphQLError",
+  "type": "object",
+  "description": "A GraphQL error returned when a query fails partially or completely.",
+  "properties": {
+    "message": {
+      "type": "string",
+      "description": "Human-readable description of the error."
+    },
+    "locations": {
+      "type": "array",
+      "description": "Locations in the query where the error occurred.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "line": {
+            "type": "integer",
+            "description": "The line number in the query."
+          },
+          "column": {
+            "type": "integer",
+            "description": "The column number in the query."
+          }
+        }
+      }
+    },
+    "path": {
+      "type": "array",
+      "description": "Path to the field that caused the error.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "description": "Additional error metadata.",
+      "additionalProperties": true
+    }
+  }
+}

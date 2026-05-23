@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HighlightsResult",
+  "title": "HighlightsResult",
+  "type": "object",
+  "description": "The generated highlights across all matched sessions.",
+  "properties": {
+    "highlights": {
+      "type": "string",
+      "description": "Markdown-formatted summary across all sessions, with links to relevant times in the referenced sessions."
+    },
+    "sessions": {
+      "type": "array",
+      "description": "Individual session summaries.",
+      "items": {
+        "$ref": "#/components/schemas/SessionHighlight"
+      }
+    }
+  }
+}

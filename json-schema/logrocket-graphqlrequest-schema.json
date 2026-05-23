@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GraphQLRequest",
+  "title": "GraphQLRequest",
+  "type": "object",
+  "description": "A standard GraphQL request containing a query string and optional variables and operation name.",
+  "required": [
+    "query"
+  ],
+  "properties": {
+    "query": {
+      "type": "string",
+      "description": "The GraphQL query or mutation string to execute."
+    },
+    "variables": {
+      "type": "object",
+      "description": "Variables to substitute into the GraphQL query.",
+      "additionalProperties": true
+    },
+    "operationName": {
+      "type": "string",
+      "description": "The name of the operation to execute when the query contains multiple operations."
+    }
+  }
+}

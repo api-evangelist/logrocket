@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/User",
+  "title": "User",
+  "type": "object",
+  "description": "A LogRocket user record with identification traits.",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "description": "The unique identifier for the user."
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the user."
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "The email address of the user."
+    },
+    "traits": {
+      "type": "object",
+      "description": "Custom key-value pairs representing user traits. All values are returned as strings regardless of the input type.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}

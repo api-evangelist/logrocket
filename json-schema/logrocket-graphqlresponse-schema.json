@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GraphQLResponse",
+  "title": "GraphQLResponse",
+  "type": "object",
+  "description": "A standard GraphQL response containing data and optional errors.",
+  "properties": {
+    "data": {
+      "type": "object",
+      "description": "The result of the executed query. Structure depends on the fields requested in the query.",
+      "additionalProperties": true
+    },
+    "errors": {
+      "type": "array",
+      "description": "Array of errors encountered during query execution.",
+      "items": {
+        "$ref": "#/components/schemas/GraphQLError"
+      }
+    }
+  }
+}

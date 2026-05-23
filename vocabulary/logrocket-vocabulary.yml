@@ -1,0 +1,11 @@
+name: LogRocket Domain Vocabulary
+provider: LogRocket
+providerId: logrocket
+description: Tag-derived vocabulary for the LogRocket API surface; sourced from openapi/ tags.
+terms:
+- term: Data Export
+  description: Retrieve exported session data files from storage buckets.
+- term: Highlights
+  description: Access Galileo AI-generated session highlights and summaries.
+- term: Users
+  description: Manage user identification and traits for session context.

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HighlightsRequest",
+  "title": "HighlightsRequest",
+  "type": "object",
+  "description": "Request body for generating Galileo AI session highlights.",
+  "properties": {
+    "userEmail": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address of the user whose sessions to summarize. Up to 10 most recent sessions from the last 30 days will be included."
+    },
+    "userID": {
+      "type": "string",
+      "description": "User ID of the user whose sessions to summarize. Alternative to userEmail."
+    },
+    "timeRange": {
+      "type": "object",
+      "description": "Time range to limit the sessions included in the highlights.",
+      "properties": {
+        "startMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Start of the time range as a Unix timestamp in milliseconds."
+        },
+        "endMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "End of the time range as a Unix timestamp in milliseconds."
+        }
+      }
+    },
+    "webhookURL": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to receive a POST request with the highlights results when they are ready. If not provided, poll the GET endpoint with the request ID."
+    }
+  }
+}

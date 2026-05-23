@@ -1,0 +1,96 @@
+{
+  "provider": "LogRocket",
+  "providerId": "logrocket",
+  "kind": "json-structure",
+  "description": "Structural overview of the LogRocket API surface; extracted from openapi/.",
+  "schemaCount": 8,
+  "operationCount": 4,
+  "schemas": [
+    {
+      "name": "UserIdentificationRequest",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "User",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "DataExportResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ExportedSession",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "HighlightsRequest",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "HighlightsResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "HighlightsResult",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "SessionHighlight",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "PUT",
+      "path": "/orgs/{orgId}/apps/{appId}/users/{userId}",
+      "operationId": "updateUser",
+      "summary": "Create or update user traits",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{orgId}/apps/{appId}/data-export/",
+      "operationId": "listDataExports",
+      "summary": "List exported session data files",
+      "tags": [
+        "Data Export"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{orgId}/apps/{appId}/highlights/",
+      "operationId": "getHighlights",
+      "summary": "Retrieve Galileo AI session highlights",
+      "tags": [
+        "Highlights"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/orgs/{orgId}/apps/{appId}/highlights/",
+      "operationId": "createHighlights",
+      "summary": "Request Galileo AI session highlights",
+      "tags": [
+        "Highlights"
+      ]
+    }
+  ]
+}

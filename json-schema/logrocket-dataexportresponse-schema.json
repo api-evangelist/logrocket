@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DataExportResponse",
+  "title": "DataExportResponse",
+  "type": "object",
+  "description": "Paginated response containing exported session data file URLs.",
+  "properties": {
+    "cursor": {
+      "type": "string",
+      "description": "Cursor value for retrieving the next page of results. Treat as a string even though it may appear numeric."
+    },
+    "sessions": {
+      "type": "array",
+      "description": "Array of exported session records with download URLs.",
+      "items": {
+        "$ref": "#/components/schemas/ExportedSession"
+      }
+    }
+  }
+}

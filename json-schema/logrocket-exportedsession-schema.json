@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ExportedSession",
+  "title": "ExportedSession",
+  "type": "object",
+  "description": "An exported session data file record.",
+  "properties": {
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to download the JSON Lines file containing the session data."
+    }
+  }
+}
