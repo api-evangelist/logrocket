@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LogRocket GraphQL API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GraphQL",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute a GraphQL query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.logrocket.com/graphql",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a GraphQL query or mutation against the LogRocket data model. Supports queries for sessions, users, errors, performance metrics, and other monitoring data. Use the GraphQL introspection query to discover the available schema, types, and fields."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

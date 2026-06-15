@@ -1,0 +1,180 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LogRocket REST API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create or update user traits",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.logrocket.com/v1/orgs/:orgId/apps/:appId/users/:userId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "The organization identifier found in the LogRocket dashboard URL."
+              },
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "The application or project identifier found in the LogRocket dashboard URL."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the user within your application."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates a user record with the specified traits. If the user already exists, any traits present in the request will be updated to the new value. Traits not included in the request will maintain their previous values. To remove a trait, set it to a blank value. Any user trait values submitted as integers or booleans will be converted to strings in the response."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Data Export",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List exported session data files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.logrocket.com/v1/orgs/:orgId/apps/:appId/data-export/",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "The organization identifier found in the LogRocket dashboard URL."
+              },
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "The application or project identifier found in the LogRocket dashboard URL."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Cursor from a previous response to retrieve the next page of newer sessions. Treat this value as a string even though it may appear numeric."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of session export records to return per page. Default is 10, maximum is 100."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp in milliseconds to start retrieving sessions from."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of exported session data files. Each session produces a single JSON Lines file when the session completes, which is defined as no new data being received for over an hour. Use the cursor from the response to retrieve the next page of results."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Highlights",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Galileo AI session highlights",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.logrocket.com/v1/orgs/:orgId/apps/:appId/highlights/",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "The organization identifier found in the LogRocket dashboard URL."
+              },
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "The application or project identifier found in the LogRocket dashboard URL."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The request ID returned from the POST highlights endpoint."
+              }
+            ]
+          },
+          "docs": "Retrieves the status and results of a previously submitted highlights request. If highlights are still being generated, the result field will be null and the status will be PENDING. When complete, the result includes overall highlights across all sessions and per-session highlights with Markdown-formatted links to relevant session times."
+        },
+        {
+          "info": {
+            "name": "Request Galileo AI session highlights",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.logrocket.com/v1/orgs/:orgId/apps/:appId/highlights/",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "The organization identifier found in the LogRocket dashboard URL."
+              },
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "The application or project identifier found in the LogRocket dashboard URL."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates a request for Galileo AI to generate session highlights and summaries. You can specify a user by email or user ID, and optionally limit the time range. The response includes a request ID that can be used to poll for results. Optionally provide a webhook URL to receive results via POST when they are ready."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
