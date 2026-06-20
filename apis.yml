@@ -5,7 +5,7 @@ kind: company
 description: >-
   LogRocket is a session replay, product analytics, and frontend monitoring platform that captures user sessions,
   errors, and performance data.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Session Replay
 - Product Analytics
@@ -21,7 +21,7 @@ apis:
   description: >-
     LogRocket REST API supports server-side identification, custom events, session metadata retrieval, user/session
     lookup, and integration management.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.logrocket.com/reference
   baseURL: https://api.logrocket.com/v1
   tags:
@@ -38,7 +38,7 @@ apis:
 - aid: logrocket:logrocket-graphql-api
   name: LogRocket GraphQL API
   description: LogRocket GraphQL API for querying session, event, error, and analytics data with flexible field selection.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.logrocket.com/reference
   baseURL: https://api.logrocket.com
   tags:
