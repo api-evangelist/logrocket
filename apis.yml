@@ -67,7 +67,7 @@ common:
   url: rate-limits/logrocket-rate-limits.yml
 - type: FinOps
   url: finops/logrocket-finops.yml
-- type: LLMsTxt
+- type: LlmsText
   url: https://docs.logrocket.com/llms.txt
 maintainers:
 - FN: Kin Lane
