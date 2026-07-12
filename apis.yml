@@ -53,6 +53,12 @@ apis:
   - url: graphql/logrocket-graphql.md
     type: GraphQL
 common:
+- type: TrustCenter
+  url: security/logrocket-trust-center.yml
+- type: DomainSecurity
+  url: security/logrocket-domain-security.yml
+- type: Authentication
+  url: authentication/logrocket-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/LogRocket
 - type: LinkedIn
@@ -69,6 +75,8 @@ common:
   url: finops/logrocket-finops.yml
 - type: LlmsText
   url: https://docs.logrocket.com/llms.txt
+- url: https://blog.logrocket.com/feed/
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

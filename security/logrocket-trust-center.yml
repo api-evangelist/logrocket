@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://cpq.logrocket.com/trust
+url: https://cpq.logrocket.com/trust
+certifications:
+- SOC 2
+- GDPR
+evidence:
+- source: https://cpq.logrocket.com/trust
+  keywords:
+  - soc 2
+  - trust center
+  - gdpr

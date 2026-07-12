@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/logrocket-graphql-api-openapi.yml, openapi/logrocket-rest-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: tokenAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: API token authentication. Use the format "token <your-api-key>". API keys are
+    available from the LogRocket dashboard under Settings > General Settings.
+  sources:
+  - openapi/logrocket-graphql-api-openapi.yml
+  - openapi/logrocket-rest-api-openapi.yml
