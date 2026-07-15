@@ -53,6 +53,8 @@ apis:
   - url: graphql/logrocket-graphql.md
     type: GraphQL
 common:
+- type: AgenticAccess
+  url: agentic-access/logrocket-agentic-access.yml
 - type: TrustCenter
   url: security/logrocket-trust-center.yml
 - type: DomainSecurity
