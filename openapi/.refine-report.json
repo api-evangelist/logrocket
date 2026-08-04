@@ -1,0 +1,20 @@
+{
+  "provider": "logrocket",
+  "sources": [
+    "logrocket-data-export-api-openapi.yml",
+    "logrocket-graphql-api-openapi.yml",
+    "logrocket-highlights-api-openapi.yml",
+    "logrocket-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "logrocket-data-export-api-openapi.yml",
+    "logrocket-graphql-api-openapi.yml",
+    "logrocket-highlights-api-openapi.yml",
+    "logrocket-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
