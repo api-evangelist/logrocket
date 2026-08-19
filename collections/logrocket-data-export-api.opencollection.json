@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LogRocket GraphQL Data Export API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Export",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List exported session data files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.logrocket.com/orgs/:orgId/apps/:appId/data-export/",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "The organization identifier found in the LogRocket dashboard URL."
+              },
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "The application or project identifier found in the LogRocket dashboard URL."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Cursor from a previous response to retrieve the next page of newer sessions. Treat this value as a string even though it may appear numeric."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of session export records to return per page. Default is 10, maximum is 100."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp in milliseconds to start retrieving sessions from."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of exported session data files. Each session produces a single JSON Lines file when the session completes, which is defined as no new data being received for over an hour. Use the cursor from the response to retrieve the next page of results."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

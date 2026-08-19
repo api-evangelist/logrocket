@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "604a0011-fd53-41ff-a4b1-d4b25a0026d8",
+      "id": "60bb3109-ebfe-406c-ac5f-4e1ac2b6f5f5",
       "name": "GraphQL",
       "description": {
         "content": "GraphQL endpoint for querying session replay and analytics data.",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "cbe86d51-f348-4ab1-866a-15e56e733b2c",
+          "id": "53f975dc-e1d3-41e1-b0e6-5e498bb1b3ad",
           "name": "Execute a GraphQL query",
           "request": {
             "name": "Execute a GraphQL query",
@@ -41,7 +41,7 @@
             "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"key_0\": \"string\",\n    \"key_1\": 419.9571532882618,\n    \"key_2\": \"string\",\n    \"key_3\": 2112.4749340496664\n  },\n  \"operationName\": \"<string>\"\n}",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"key_0\": true,\n    \"key_1\": 5182\n  },\n  \"operationName\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -51,7 +51,7 @@
           },
           "response": [
             {
-              "id": "6ab0bcf9-e371-4207-ba8c-84622dc402e2",
+              "id": "9dd244ce-b6a9-40f8-9591-656a435e85b0",
               "name": "GraphQL query executed successfully.",
               "originalRequest": {
                 "url": {
@@ -81,7 +81,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"key_0\": 2168,\n    \"key_1\": 6388,\n    \"key_2\": 4619\n  },\n  \"operationName\": \"<string>\"\n}",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"key_0\": true,\n    \"key_1\": 3378\n  },\n  \"operationName\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -97,12 +97,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"data\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": false\n  },\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"locations\": [\n        {\n          \"line\": 1080,\n          \"column\": 2469\n        },\n        {\n          \"line\": 7802,\n          \"column\": 3131\n        }\n      ],\n      \"path\": [\n        \"string\",\n        \"string\"\n      ],\n      \"extensions\": {\n        \"key_0\": false,\n        \"key_1\": 9262.707829299814\n      }\n    },\n    {\n      \"message\": \"string\",\n      \"locations\": [\n        {\n          \"line\": 9275,\n          \"column\": 6939\n        },\n        {\n          \"line\": 349,\n          \"column\": 3462\n        }\n      ],\n      \"path\": [\n        \"string\",\n        \"string\"\n      ],\n      \"extensions\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ]\n}",
+              "body": "{\n  \"data\": {\n    \"key_0\": 2539.688829134209\n  },\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"locations\": [\n        {\n          \"line\": 5589,\n          \"column\": 2287\n        },\n        {\n          \"line\": 7422,\n          \"column\": 8023\n        }\n      ],\n      \"path\": [\n        \"string\",\n        \"string\"\n      ],\n      \"extensions\": {\n        \"key_0\": 5643.094923605388,\n        \"key_1\": true\n      }\n    },\n    {\n      \"message\": \"string\",\n      \"locations\": [\n        {\n          \"line\": 5126,\n          \"column\": 7007\n        },\n        {\n          \"line\": 7316,\n          \"column\": 9305\n        }\n      ],\n      \"path\": [\n        \"string\",\n        \"string\"\n      ],\n      \"extensions\": {\n        \"key_0\": 4705.745520675563,\n        \"key_1\": 1814.215002237517\n      }\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "6c6aa541-fd81-429b-896a-1a33eb390d35",
+              "id": "c7978a0b-f5e9-4979-b881-e42ebf212017",
               "name": "Malformed GraphQL query or invalid variables.",
               "originalRequest": {
                 "url": {
@@ -128,7 +128,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"key_0\": 2168,\n    \"key_1\": 6388,\n    \"key_2\": 4619\n  },\n  \"operationName\": \"<string>\"\n}",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"key_0\": true,\n    \"key_1\": 3378\n  },\n  \"operationName\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -149,7 +149,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "820fcd03-db6b-416b-b1c1-d843a7f447f6",
+              "id": "8d9d47ee-44a6-4f25-96d1-dfd24a4fd0ef",
               "name": "Missing or invalid API key.",
               "originalRequest": {
                 "url": {
@@ -175,7 +175,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"key_0\": 2168,\n    \"key_1\": 6388,\n    \"key_2\": 4619\n  },\n  \"operationName\": \"<string>\"\n}",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"key_0\": true,\n    \"key_1\": 3378\n  },\n  \"operationName\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -231,8 +231,8 @@
     ]
   },
   "info": {
-    "_postman_id": "2c3252d6-e98a-49d1-b45a-2f9c779184db",
-    "name": "LogRocket GraphQL API",
+    "_postman_id": "d1944f9e-e25e-47af-8e56-5a8041b5d975",
+    "name": "LogRocket Data Export GraphQL API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "The LogRocket GraphQL API allows developers to query session replay and analytics data using GraphQL. It provides a flexible query interface for retrieving session information, user activity, error details, and performance metrics. Developers can use this API to build custom dashboards, integrate session data into internal tools, and perform advanced filtering and aggregation of LogRocket monitoring data.\n\nContact Support:\n Name: LogRocket Support",
