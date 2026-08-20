@@ -81,6 +81,8 @@ apis:
   humanURL: https://docs.logrocket.com/reference
   baseURL: https://api.logrocket.com/v1
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
