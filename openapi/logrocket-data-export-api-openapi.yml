@@ -1,14 +1,14 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: LogRocket GraphQL Data Export API
-  description: The LogRocket GraphQL API allows developers to query session replay and analytics data using GraphQL. It provides a flexible query interface for retrieving session information, user activity, error details, and performance metrics. Developers can use this API to build custom dashboards, integrate session data into internal tools, and perform advanced filtering and aggregation of LogRocket monitoring data.
+  title: LogRocket REST Data Export API
+  description: The LogRocket REST API provides programmatic access to LogRocket session replay and monitoring data. It enables developers to manage user identification by sending demographic and engagement data via PUT requests to contextualize user behavior. The API also supports retrieving session highlights and exported session data. All endpoints require an API access key available from the LogRocket dashboard under Settings.
   version: '1.0'
   contact:
     name: LogRocket Support
     url: https://logrocket.com/support
   termsOfService: https://logrocket.com/terms
 servers:
-- url: https://api.logrocket.com
+- url: https://api.logrocket.com/v1
   description: LogRocket Production API
 security:
 - tokenAuth: []
@@ -59,6 +59,21 @@ paths:
         '404':
           description: Organization or application not found.
 components:
+  parameters:
+    appId:
+      name: appId
+      in: path
+      required: true
+      description: The application or project identifier found in the LogRocket dashboard URL.
+      schema:
+        type: string
+    orgId:
+      name: orgId
+      in: path
+      required: true
+      description: The organization identifier found in the LogRocket dashboard URL.
+      schema:
+        type: string
   schemas:
     DataExportResponse:
       type: object
@@ -80,21 +95,6 @@ components:
           type: string
           format: uri
           description: URL to download the JSON Lines file containing the session data.
-  parameters:
-    orgId:
-      name: orgId
-      in: path
-      required: true
-      description: The organization identifier found in the LogRocket dashboard URL.
-      schema:
-        type: string
-    appId:
-      name: appId
-      in: path
-      required: true
-      description: The application or project identifier found in the LogRocket dashboard URL.
-      schema:
-        type: string
   securitySchemes:
     tokenAuth:
       type: apiKey
@@ -102,5 +102,5 @@ components:
       name: Authorization
       description: API token authentication. Use the format "token <your-api-key>". API keys are available from the LogRocket dashboard under Settings > General Settings.
 externalDocs:
-  description: LogRocket GraphQL API Documentation
-  url: https://docs.logrocket.com/reference/graphql-1
+  description: LogRocket API Reference
+  url: https://docs.logrocket.com/reference
