@@ -52,41 +52,7 @@ paths:
         '404':
           description: Organization or application not found.
 components:
-  parameters:
-    appId:
-      name: appId
-      in: path
-      required: true
-      description: The application or project identifier found in the LogRocket dashboard URL.
-      schema:
-        type: string
-    orgId:
-      name: orgId
-      in: path
-      required: true
-      description: The organization identifier found in the LogRocket dashboard URL.
-      schema:
-        type: string
   schemas:
-    UserIdentificationRequest:
-      type: object
-      description: Request body for creating or updating user identification traits.
-      properties:
-        name:
-          type: string
-          description: The display name of the user.
-        email:
-          type: string
-          format: email
-          description: The email address of the user.
-        traits:
-          type: object
-          description: Custom key-value pairs representing user traits such as subscription type, revenue data, or product interest. Values will be converted to strings in the response.
-          additionalProperties:
-            oneOf:
-            - type: string
-            - type: integer
-            - type: boolean
     User:
       type: object
       description: A LogRocket user record with identification traits.
@@ -106,6 +72,40 @@ components:
           description: Custom key-value pairs representing user traits. All values are returned as strings regardless of the input type.
           additionalProperties:
             type: string
+    UserIdentificationRequest:
+      type: object
+      description: Request body for creating or updating user identification traits.
+      properties:
+        name:
+          type: string
+          description: The display name of the user.
+        email:
+          type: string
+          format: email
+          description: The email address of the user.
+        traits:
+          type: object
+          description: Custom key-value pairs representing user traits such as subscription type, revenue data, or product interest. Values will be converted to strings in the response.
+          additionalProperties:
+            oneOf:
+            - type: string
+            - type: integer
+            - type: boolean
+  parameters:
+    appId:
+      name: appId
+      in: path
+      required: true
+      description: The application or project identifier found in the LogRocket dashboard URL.
+      schema:
+        type: string
+    orgId:
+      name: orgId
+      in: path
+      required: true
+      description: The organization identifier found in the LogRocket dashboard URL.
+      schema:
+        type: string
   securitySchemes:
     tokenAuth:
       type: apiKey
