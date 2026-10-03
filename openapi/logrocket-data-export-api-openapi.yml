@@ -60,18 +60,18 @@ paths:
           description: Organization or application not found.
 components:
   parameters:
-    appId:
-      name: appId
-      in: path
-      required: true
-      description: The application or project identifier found in the LogRocket dashboard URL.
-      schema:
-        type: string
     orgId:
       name: orgId
       in: path
       required: true
       description: The organization identifier found in the LogRocket dashboard URL.
+      schema:
+        type: string
+    appId:
+      name: appId
+      in: path
+      required: true
+      description: The application or project identifier found in the LogRocket dashboard URL.
       schema:
         type: string
   schemas:

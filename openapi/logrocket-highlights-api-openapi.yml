@@ -73,18 +73,18 @@ paths:
           description: Highlights request not found.
 components:
   parameters:
-    appId:
-      name: appId
-      in: path
-      required: true
-      description: The application or project identifier found in the LogRocket dashboard URL.
-      schema:
-        type: string
     orgId:
       name: orgId
       in: path
       required: true
       description: The organization identifier found in the LogRocket dashboard URL.
+      schema:
+        type: string
+    appId:
+      name: appId
+      in: path
+      required: true
+      description: The application or project identifier found in the LogRocket dashboard URL.
       schema:
         type: string
   schemas:
@@ -100,6 +100,28 @@ components:
           description: Individual session summaries.
           items:
             $ref: '#/components/schemas/SessionHighlight'
+    HighlightsResponse:
+      type: object
+      description: Response containing Galileo AI highlights status and results.
+      properties:
+        requestID:
+          type: string
+          description: Unique identifier for the highlights request.
+        appID:
+          type: string
+          description: The application ID associated with the request.
+        status:
+          type: string
+          description: Current status of the highlights generation.
+          enum:
+          - PENDING
+          - COMPLETE
+          - FAILED
+        result:
+          description: The highlights result, or null if still pending.
+          oneOf:
+          - type: 'null'
+          - $ref: '#/components/schemas/HighlightsResult'
     HighlightsRequest:
       type: object
       description: Request body for generating Galileo AI session highlights.
@@ -137,28 +159,6 @@ components:
         highlights:
           type: string
           description: Markdown-formatted highlights for this specific session, with links to relevant times.
-    HighlightsResponse:
-      type: object
-      description: Response containing Galileo AI highlights status and results.
-      properties:
-        requestID:
-          type: string
-          description: Unique identifier for the highlights request.
-        appID:
-          type: string
-          description: The application ID associated with the request.
-        status:
-          type: string
-          description: Current status of the highlights generation.
-          enum:
-          - PENDING
-          - COMPLETE
-          - FAILED
-        result:
-          description: The highlights result, or null if still pending.
-          oneOf:
-          - type: 'null'
-          - $ref: '#/components/schemas/HighlightsResult'
   securitySchemes:
     tokenAuth:
       type: apiKey
