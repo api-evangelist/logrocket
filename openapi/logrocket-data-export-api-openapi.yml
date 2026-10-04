@@ -60,13 +60,6 @@ paths:
           description: Organization or application not found.
 components:
   parameters:
-    orgId:
-      name: orgId
-      in: path
-      required: true
-      description: The organization identifier found in the LogRocket dashboard URL.
-      schema:
-        type: string
     appId:
       name: appId
       in: path
@@ -74,15 +67,14 @@ components:
       description: The application or project identifier found in the LogRocket dashboard URL.
       schema:
         type: string
+    orgId:
+      name: orgId
+      in: path
+      required: true
+      description: The organization identifier found in the LogRocket dashboard URL.
+      schema:
+        type: string
   schemas:
-    ExportedSession:
-      type: object
-      description: An exported session data file record.
-      properties:
-        url:
-          type: string
-          format: uri
-          description: URL to download the JSON Lines file containing the session data.
     DataExportResponse:
       type: object
       description: Paginated response containing exported session data file URLs.
@@ -95,6 +87,14 @@ components:
           description: Array of exported session records with download URLs.
           items:
             $ref: '#/components/schemas/ExportedSession'
+    ExportedSession:
+      type: object
+      description: An exported session data file record.
+      properties:
+        url:
+          type: string
+          format: uri
+          description: URL to download the JSON Lines file containing the session data.
   securitySchemes:
     tokenAuth:
       type: apiKey

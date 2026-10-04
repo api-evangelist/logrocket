@@ -72,21 +72,6 @@ paths:
         '404':
           description: Highlights request not found.
 components:
-  parameters:
-    orgId:
-      name: orgId
-      in: path
-      required: true
-      description: The organization identifier found in the LogRocket dashboard URL.
-      schema:
-        type: string
-    appId:
-      name: appId
-      in: path
-      required: true
-      description: The application or project identifier found in the LogRocket dashboard URL.
-      schema:
-        type: string
   schemas:
     HighlightsResult:
       type: object
@@ -100,28 +85,16 @@ components:
           description: Individual session summaries.
           items:
             $ref: '#/components/schemas/SessionHighlight'
-    HighlightsResponse:
+    SessionHighlight:
       type: object
-      description: Response containing Galileo AI highlights status and results.
+      description: Highlights for an individual session.
       properties:
-        requestID:
+        sessionId:
           type: string
-          description: Unique identifier for the highlights request.
-        appID:
+          description: The unique identifier for the session.
+        highlights:
           type: string
-          description: The application ID associated with the request.
-        status:
-          type: string
-          description: Current status of the highlights generation.
-          enum:
-          - PENDING
-          - COMPLETE
-          - FAILED
-        result:
-          description: The highlights result, or null if still pending.
-          oneOf:
-          - type: 'null'
-          - $ref: '#/components/schemas/HighlightsResult'
+          description: Markdown-formatted highlights for this specific session, with links to relevant times.
     HighlightsRequest:
       type: object
       description: Request body for generating Galileo AI session highlights.
@@ -149,16 +122,43 @@ components:
           type: string
           format: uri
           description: URL to receive a POST request with the highlights results when they are ready. If not provided, poll the GET endpoint with the request ID.
-    SessionHighlight:
+    HighlightsResponse:
       type: object
-      description: Highlights for an individual session.
+      description: Response containing Galileo AI highlights status and results.
       properties:
-        sessionId:
+        requestID:
           type: string
-          description: The unique identifier for the session.
-        highlights:
+          description: Unique identifier for the highlights request.
+        appID:
           type: string
-          description: Markdown-formatted highlights for this specific session, with links to relevant times.
+          description: The application ID associated with the request.
+        status:
+          type: string
+          description: Current status of the highlights generation.
+          enum:
+          - PENDING
+          - COMPLETE
+          - FAILED
+        result:
+          description: The highlights result, or null if still pending.
+          oneOf:
+          - type: 'null'
+          - $ref: '#/components/schemas/HighlightsResult'
+  parameters:
+    appId:
+      name: appId
+      in: path
+      required: true
+      description: The application or project identifier found in the LogRocket dashboard URL.
+      schema:
+        type: string
+    orgId:
+      name: orgId
+      in: path
+      required: true
+      description: The organization identifier found in the LogRocket dashboard URL.
+      schema:
+        type: string
   securitySchemes:
     tokenAuth:
       type: apiKey
