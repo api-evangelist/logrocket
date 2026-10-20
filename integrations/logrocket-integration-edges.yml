@@ -27,7 +27,42 @@ edges:
       - Track
   detected_by: sweep-cdp.py
   first_seen: '2026-10-14'
+- partner_name: GitHub Marketplace (apps)
+  partner: github
+  partner_match: aggregator
+  type: marketplace
+  marketplace: github-apps
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://github.com/marketplace/logrocket
+  listing_count: 1
+  apps:
+  - LogRocket
+  publisher_name: LogRocket
+  detected_by: sweep-devtools.py
+  detected: '2026-10-19'
+- partner_name: Zendesk (own)
+  partner: zendesk
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.zendesk.com/marketplace/apps/support/1070759/logrocket/
+  mirror_of: zendesk/integrations/zendesk-integration-edges.yml
+  apps:
+  - LogRocket
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: AI and Bots
 method: searched
 checked:
+- https://github.com/marketplace?type=apps
 - https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-logrocket
+- zendesk/integrations/zendesk-integration-edges.yml
 source: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-logrocket
+marketplace_apps: []
