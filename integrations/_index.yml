@@ -27,19 +27,6 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: logrocket-zendesk-own
-  label: Zendesk (own)
-  partner: zendesk
-  partner_name: Zendesk (own)
-  category: AI and Bots
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://www.zendesk.com/marketplace/apps/support/1070759/logrocket/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: logrocket-battery-ventures
   label: Battery Ventures
   partner: battery-ventures
@@ -66,5 +53,31 @@
     detected_by: sweep-vc-portfolios.py
     detected: '2026-10-21'
     status: Active
+  status: not-a-workflow
+  arazzo: null
+- slug: logrocket-zendesk-own
+  label: Zendesk (own)
+  partner: zendesk
+  partner_name: Zendesk (own)
+  category: AI and Bots
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.zendesk.com/marketplace/apps/support/1070759/logrocket/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: logrocket-intercom-own
+  label: Intercom (own)
+  partner: intercom
+  partner_name: Intercom (own)
+  category: Analytics
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.intercom.com/app-store/?app_package_code=logrocket
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null

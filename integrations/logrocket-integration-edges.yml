@@ -42,23 +42,6 @@ edges:
   publisher_name: LogRocket
   detected_by: sweep-devtools.py
   detected: '2026-10-19'
-- partner_name: Zendesk (own)
-  partner: zendesk
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://www.zendesk.com/marketplace/apps/support/1070759/logrocket/
-  mirror_of: zendesk/integrations/zendesk-integration-edges.yml
-  apps:
-  - LogRocket
-  listing_count: 1
-  detected: '2026-10-20'
-  detected_by: mirror-platform-listings.py
-  category: AI and Bots
 - partner_name: Battery Ventures
   partner: battery-ventures
   partner_match: register
@@ -86,6 +69,40 @@ edges:
     status: Active
   detected_by: sweep-vc-portfolios.py
   first_seen: '2026-10-21'
+- partner_name: Zendesk (own)
+  partner: zendesk
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.zendesk.com/marketplace/apps/support/1070759/logrocket/
+  mirror_of: zendesk/integrations/zendesk-integration-edges.yml
+  apps:
+  - LogRocket
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: AI and Bots
+- partner_name: Intercom (own)
+  partner: intercom
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.intercom.com/app-store/?app_package_code=logrocket
+  mirror_of: intercom/integrations/intercom-integration-edges.yml
+  apps:
+  - LogRocket
+  listing_count: 1
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Analytics
 method: searched
 checked:
 - https://github.com/marketplace?type=apps
@@ -97,5 +114,6 @@ checked:
 - https://www.indexventures.com/companies/
 - https://www.sequoiacap.com/our-companies/
 - https://www.sequoiacap.com/sitemap.xml
+- intercom/integrations/intercom-integration-edges.yml
 source: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-logrocket
 marketplace_apps: []
