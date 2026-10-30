@@ -1,4 +1,4 @@
-# LogRocket (logrocket)
+# LogRocket
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,76 +66,192 @@
 
 LogRocket is a session replay, product analytics, and frontend monitoring platform that captures user sessions, errors, and performance data.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/logrocket/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/logrocket/refs/heads/main/apis.yml)
+**Areas:** Session Replay · Product Analytics · Frontend Monitoring · Logging · Errors
 
-## Tags
+## LogRocket on APIs.io
 
-- Session Replay
-- Product Analytics
-- Frontend Monitoring
-- Logging
-- Errors
+Everything profiled for LogRocket is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/logrocket/](https://apis.io/providers/logrocket/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (4)
 
-- **Created:** 2026-05-08
-- **Modified:** 2026-05-19
+- [LogRocket Data Export API](https://apis.io/apis/logrocket/logrocket-data-export-api/) — Retrieve exported session data files from storage buckets.
+- [LogRocket Highlights API](https://apis.io/apis/logrocket/logrocket-highlights-api/) — Access Galileo AI-generated session highlights and summaries.
+- [LogRocket Users API](https://apis.io/apis/logrocket/logrocket-users-api/) — Manage user identification and traits for session context.
+- [LogRocket Graph QL API](https://apis.io/apis/logrocket/logrocket-graph-ql-api/) — GraphQL endpoint for querying session replay and analytics data.
 
-## APIs
+### Published properties
 
-### LogRocket REST API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-LogRocket REST API supports server-side identification, custom events, session metadata retrieval, user/session lookup, and integration management.
+#### AsyncAPI (1)
 
-- **Human URL:** [https://docs.logrocket.com/reference](https://docs.logrocket.com/reference)
-- **Base URL:** `https://api.logrocket.com/v1`
+Event-driven and webhook contracts.
 
-#### Tags
+- [LogRocket Galileo Highlights Webhook](https://apis.io/asyncapis/logrocket/logrocket-highlights-webhook-asyncapi/)
 
-- Session Replay
-- Analytics
-- REST
+#### Event channels (1)
 
-#### Properties
+Individual events and webhooks the provider emits.
 
-- [Documentation](https://docs.logrocket.com/reference)
-- [Authentication](https://docs.logrocket.com/reference/authentication)
-- [OpenAPI](openapi/logrocket-rest-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/logrocket-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/logrocket-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [/](https://apis.io/channels/logrocket/untitled/)
 
-### LogRocket GraphQL API
+#### GraphQL (1)
 
-LogRocket GraphQL API for querying session, event, error, and analytics data with flexible field selection.
+GraphQL schemas.
 
-- **Human URL:** [https://docs.logrocket.com/reference](https://docs.logrocket.com/reference)
-- **Base URL:** `https://api.logrocket.com`
+- [LogRocket GraphQL API](https://apis.io/graphqls/logrocket/logrocket-graphql/)
 
-#### Tags
+#### MCP servers (1)
 
-- Session Replay
-- Analytics
-- GraphQL
+Model Context Protocol servers that expose the API to agents.
 
-#### Properties
+- [logrocket](https://apis.io/servers/logrocket/logrocket/)
 
-- [Documentation](https://docs.logrocket.com/reference)
-- [OpenAPI](openapi/logrocket-graphql-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/logrocket-graphql-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/logrocket-graphql-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Agentic access (1)
 
-## Common Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [GitHub Organization](https://github.com/LogRocket)
-- [LinkedIn](https://www.linkedin.com/company/logrocket)
+- [Logrocket Agentic Access](https://apis.io/agentic-access/logrocket/logrocket-agentic-access/)
+
+#### JSON Schema (13)
+
+The data models the API reads and writes.
+
+- [LogRocket Data Export Record](https://apis.io/schemas/logrocket/logrocket-data-export/)
+- [DataExportResponse](https://apis.io/schemas/logrocket/logrocket-dataexportresponse/)
+- [ExportedSession](https://apis.io/schemas/logrocket/logrocket-exportedsession/)
+- [GraphQLError](https://apis.io/schemas/logrocket/logrocket-graphqlerror/)
+- [GraphQLRequest](https://apis.io/schemas/logrocket/logrocket-graphqlrequest/)
+- [GraphQLResponse](https://apis.io/schemas/logrocket/logrocket-graphqlresponse/)
+- [HighlightsRequest](https://apis.io/schemas/logrocket/logrocket-highlightsrequest/)
+- [HighlightsResponse](https://apis.io/schemas/logrocket/logrocket-highlightsresponse/)
+- [HighlightsResult](https://apis.io/schemas/logrocket/logrocket-highlightsresult/)
+- [LogRocket Session](https://apis.io/schemas/logrocket/logrocket-session/)
+- [SessionHighlight](https://apis.io/schemas/logrocket/logrocket-sessionhighlight/)
+- [User](https://apis.io/schemas/logrocket/logrocket-user/)
+- [UserIdentificationRequest](https://apis.io/schemas/logrocket/logrocket-useridentificationrequest/)
+
+#### JSON Structure (1)
+
+Data models expressed in JSON Structure.
+
+- [Logrocket Structure](https://apis.io/json-structure/logrocket/logrocket-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Logrocket Context](https://apis.io/jsonld/logrocket/logrocket-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [LogRocket Domain Vocabulary](https://apis.io/vocabularies/logrocket/logrocket-vocabulary/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [LogRocket GraphQL Data Export API](https://apis.io/collections/logrocket/open-logrocket-data-export-api/)
+- [LogRocket Data Export GraphQL API](https://apis.io/collections/logrocket/open-logrocket-graphql-api/)
+- [LogRocket GraphQL Data Export Highlights API](https://apis.io/collections/logrocket/open-logrocket-highlights-api/)
+- [LogRocket REST API](https://apis.io/collections/logrocket/open-logrocket-rest-api/)
+- [LogRocket GraphQL Data Export Users API](https://apis.io/collections/logrocket/open-logrocket-users-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [LogRocket — asyncapi rules](https://apis.io/rules/logrocket/logrocket-asyncapi-spectral-rules/)
+- [LogRocket — jsonschema rules](https://apis.io/rules/logrocket/logrocket-jsonschema-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Logrocket Authentication](https://apis.io/security/logrocket/logrocket-authentication/)
+- [Logrocket Domain Security](https://apis.io/security/logrocket/logrocket-domain-security/)
+- [Logrocket Trust Center](https://apis.io/security/logrocket/logrocket-trust-center/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Logrocket Plans Pricing](https://apis.io/plans/logrocket/logrocket-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Logrocket Rate Limits](https://apis.io/rate-limits/logrocket/logrocket-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Logrocket Finops](https://apis.io/finops/logrocket/logrocket-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://logrocket.com/)
 - [Documentation](https://docs.logrocket.com/reference)
-- [Plans](plans/logrocket-plans-pricing.yml)
-- [Rate Limits](rate-limits/logrocket-rate-limits.yml)
-- [Fin Ops](finops/logrocket-finops.yml)
-- [L L Ms Txt](https://docs.logrocket.com/llms.txt)
+- [Blog](https://blog.logrocket.com/feed/)
+- [GitHub](https://github.com/LogRocket)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 33.7** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.7 |
+| Contract quality | 62.1 |
+| Contract governance | 13.6 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 13.1 |
+| Access clarity | 13.2 |
+
+**Agent readiness 45.0** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 21.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/logrocket/](https://apis.io/providers/logrocket/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for LogRocket: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/logrocket/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
